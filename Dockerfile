@@ -5,9 +5,9 @@ ENV BITCOIN_URL='https://bitcoin.org/bin/bitcoin-core-22.0/bitcoin-22.0-x86_64-l
     BITCOIN_DIST='bitcoin.tar.gz' \
     BITCOIN_BIN='bitcoin_bin'
 
-WORKDIR /root
+WORKDIR /
 
-ADD $BITCOIN_URL /root/$BITCOIN_DIST
+ADD $BITCOIN_URL /$BITCOIN_DIST
 
 RUN set -ex \
     && echo "$BITCOIN_SHA256  $BITCOIN_DIST" | sha256sum -c - \
@@ -19,4 +19,4 @@ RUN set -ex \
 
 USER user
 
-ENTRYPOINT [ "bitcoind"]
+ENTRYPOINT [ "bitcoind" ]
