@@ -14,9 +14,6 @@ RUN set -ex \
     && mkdir $BITCOIN_BIN \
     && tar -xzvf $BITCOIN_DIST -C $BITCOIN_BIN --strip-components=2 --exclude=*-qt \
     && mv $BITCOIN_BIN/bitcoind $BITCOIN_BIN/bitcoin-cli $BITCOIN_BIN/bitcoin-tx /usr/local/bin/ \
-    && rm -r bitcoin* \
-    && useradd -m user
-
-USER user
+    && rm -r bitcoin*
 
 ENTRYPOINT [ "bitcoind" ]
